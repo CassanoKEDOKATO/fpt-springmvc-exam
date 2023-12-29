@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+                <h1>Thông tin sinh viên</h1>
+                <button type="button" class="btn btn-primary"><a th:href="@{/sinhvien/add}" style="color: white;text-decoration:none">Thêm</a></button>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Số CMND</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số ĐT</th>
+                        <th scope="col">Địa chỉ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="sinhVien : ${sinhVien}" th:data-soCMND="${sinhVien.soCMND}" onclick="redirectToDetails(this)" >
+                        <td th:text="${sinhVien.soCMND}"></td>
+                        <td th:text="${sinhVien.hoTen}"></td>
+                        <td th:text="${sinhVien.email}"></td>
+                        <td th:text="${sinhVien.soDT}"></td>
+                        <td th:text="${sinhVien.diaChi}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+</div>
+</body>
+

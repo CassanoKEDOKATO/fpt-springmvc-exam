@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <h1 class="mt-4">Thêm bằng tốt nghiệp cho sinh viên</h1>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <form th:action="@{/sinhvien/{sinhvienId}/totnghiep-add(sinhvienId=${sinhvien.soCMND})}" th:object="${totnghiep}"  method="POST">
+                <label class="my-2" for="truong">Trường</label>
+                <select class="form-control"
+                        name="truong"
+                        th:field="*{truong}"
+                        id="truong">
+                    <option th:each="truong : ${truongList}" th:value="${truong.maTruong}"
+                            th:text="${truong.tenTruong}"></option>
+
+                </select>
+                <label class="my-2" for="truong">Ngành</label>
+                <select class="form-control"
+                        name="nganh"
+                        th:field="*{nganh}"
+                        id="nganh">
+
+                    <option th:each="nganh : ${nganhList}" th:value="${nganh.maNganh}"
+                            th:text="${nganh.tenNganh}"></option>
+
+                </select>
+                <div class="form-group">
+                    <label >Hệ tốt nghiệp</label>
+                    <input type="text" class="form-control" id="heTN" name="heTN" th:field="*{heTN}" >
+                    <span th:if="${#fields.hasErrors('loaiTN')}" th:errors="*{loaiTN}"></span>
+                </div>
+                <div class="form-group">
+                    <label >Loại tốt nghiệp</label>
+                    <input type="text" class="form-control" id="loaiTN" name="loaiTN"th:field="*{loaiTN}" >
+
+                </div>
+                <div class="form-group">
+                    <label >Ngày tốt nghiệp</label>
+                    <input type="date" class="form-control" id="ngayTN" name="ngayTN" th:field="*{ngayTN}">
+
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+</script>
+</body>

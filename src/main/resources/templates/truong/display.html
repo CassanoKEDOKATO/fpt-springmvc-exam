@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Sinh Viên</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+               <div >
+                   <h1>Thông tin trường</h1>
+                   <button type="button" class="btn btn-primary"><a href="/truong/add" style="color: white;text-decoration:none">Thêm</a></button>
+                   <table class="table table-hover">
+                       <thead>
+                       <tr>
+                           <th scope="col">Mã Trường</th>
+                           <th scope="col">Tên Trường</th>
+                           <th scope="col">Địa chỉ</th>
+                           <th scope="col">Số ĐT</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr th:each="truong : ${truong}">
+                           <td th:text="${truong.maTruong}"></td>
+                           <td th:text="${truong.tenTruong}"></td>
+                           <td th:text="${truong.diaChi}"></td>
+                           <td th:text="${truong.soDT}"></td>
+                       </tr>
+                       </tbody>
+                   </table>
+               </div>
+            </div>
+</body>
+</html>
